@@ -16,4 +16,8 @@ Router.route("/generateDoc")
   .get(loginController.protect, staffAdvController.getDocdetails)
   .post(staffAdvController.saveDocDetail);
 
-module.exports = Router;
+  Router.route("/viewDoc")
+  .get(loginController.protect, staffAdvController.viewDoc)
+  .post();
+
+module.exports = Router;  

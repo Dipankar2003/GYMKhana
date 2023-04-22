@@ -11,7 +11,4 @@ Router.route("/gym").get(homeControllers.gym);
 Router.route("/sports").get(homeControllers.sports);
 
 
-
-
-
 module.exports=Router;

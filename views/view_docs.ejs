@@ -3,17 +3,18 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>View Documents</title>
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="/style.css" />
+
 </head>
 <body>
 
 <div class="container2">
-  <form style="text-align: center" >
+  <form style="text-align: center" action="/login/staffAdvisiorLogin/view_docs" method="POST">
     
-    <label for="cars">Select Year </label>
+    <label for="doc">Select Year </label>
     <select id="ddlYears"></select><br>
-    <label for="cars">Select Month </label>
-    <select placeholder="select Month">
+    <label for="doc">Select Month </label>
+    <select placeholder="select Month" id="month">
         <option name="" value="" style="display:none;">Select Month</option>
         <option name="January" value="Jan">January</option>
         <option name="February" value="Feb">February</option>

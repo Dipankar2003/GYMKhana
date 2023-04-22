@@ -3,6 +3,7 @@ const LoginRoute = require("./Routes/LoginRoutes");
 const HomeRoute = require("./Routes/HomeRoutes");
 const coordinatorRoute = require("./Routes/coordinatorRoutes");
 const StaffAdvRouter = require("./Routes/staffAdvRoutes");
+const signinRoute= require("./Routes/signupRoute");
 
 const cookieParser = require("cookie-parser");
 
@@ -21,6 +22,7 @@ app.use(bodyParser.json());
 
 app.use("/", HomeRoute);
 app.use("/login", LoginRoute);
+app.use("/signin",signinRoute); 
 app.use("/login/coordinatorLogin", coordinatorRoute);
 app.use("/login/staffAdvLogin", StaffAdvRouter);
 

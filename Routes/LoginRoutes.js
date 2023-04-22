@@ -1,9 +1,13 @@
 const loginController = require("./../Controllers/LoginControllers");
 
 const express = require("express");
-
 const Router = express.Router();
-Router.route("/student").get(loginController.studentLogin);
+
+
+
+Router.route("/studentLogin")
+  .get(loginController.studentLogin);
+
 Router.route("/coordinator")
   .get(loginController.coordinatorLogin)
   .post(loginController.coordinatorLoginAuth);

@@ -2,6 +2,8 @@ const getTeamDetails = require("./../Models/getTeamDetailsmodels");
 const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
 const generateDoc = require("./../Models/generateDoc");
+const viewDoc=require("./../Models/viewDoc");
+
 
 exports.satffAdvHomePage = (req, res) => {
   res.render("staffAdvHomePage");
@@ -9,6 +11,10 @@ exports.satffAdvHomePage = (req, res) => {
 
 exports.getDetails = (req, res) => {
   res.render("getTeamDetails");
+};
+
+exports.viewDoc=(req,res)=>{
+  res.render("view_docs");
 };
 
 exports.saveDetail = async (req, res) => {

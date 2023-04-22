@@ -18,7 +18,7 @@ exports.storeStaffAdvisiorDetails = async (req, res) => {
   const exist = await StaffAdvDetails.findOne({ fid });
   if (!exist) {
     if (password != confirmpassword) {
-      const msg = "Passward and confirm password should be same";
+      const msg = "Password and confirm password should be same";
       res.render("staffAdvisiorDetails", { msg });
     } else {
       //console.log(password);

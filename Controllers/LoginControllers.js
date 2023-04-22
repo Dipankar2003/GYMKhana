@@ -2,9 +2,8 @@ const StaffAdvDetails = require("./../Models/staffAdvisiorDetailsSchema");
 const nodemailer = require("nodemailer");
 const brcypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-exports.studentLogin = (req, res) => {
-  res.render("studentLogin");
-};
+
+
 
 exports.coordinatorLogin = (req, res) => {
   res.render("coordinatorLogin");
@@ -14,6 +13,11 @@ exports.staffAdvisiorLogin = (req, res) => {
   res.render("staffAdvisiorLogin");
 };
 
+exports.studentLogin = (req, res) => {
+  res.render("studentLogin");
+};
+
+
 //change
 
 let correctPassword = async function (enterPassword, userPassword) {
@@ -22,7 +26,7 @@ let correctPassword = async function (enterPassword, userPassword) {
 };
 
 let OTP;
-
+  
 exports.coordinatorLoginAuth = async (req, res) => {
   const enterEmail = req.body.Email;
   OTP = Math.floor(Math.random() * 9000) + 1000;
