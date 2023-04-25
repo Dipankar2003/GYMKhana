@@ -1,10 +1,8 @@
 const StaffAdvDetails = require("./../Models/staffAdvisiorDetailsSchema");
-const studentsignin=require("./../Models/studentsignin");
+const studentsignin = require("./../Models/studentsignin");
 const nodemailer = require("nodemailer");
 const brcypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
-
 
 exports.coordinatorLogin = (req, res) => {
   res.render("coordinatorLogin");
@@ -18,7 +16,6 @@ exports.studentLogin = (req, res) => {
   res.render("studentLogin");
 };
 
-
 //change
 
 let correctPassword = async function (enterPassword, userPassword) {
@@ -27,7 +24,7 @@ let correctPassword = async function (enterPassword, userPassword) {
 };
 
 let OTP;
-  
+
 exports.coordinatorLoginAuth = async (req, res) => {
   const enterEmail = req.body.Email;
   OTP = Math.floor(Math.random() * 9000) + 1000;
@@ -149,29 +146,47 @@ exports.protectCoordinator = async (req, res, next) => {
   }
 };
 
-
-exports.studentLoginAuth=async(req,res)=>{
-  const { email, psw } = req.body;
-  if (!email || !psw) {
-    res.render("StudentUploadDocs");
+exports.studentLoginAuth = async (req, res) => {
+  const { eid, password } = req.body;
+  if (!eid) {
+    res.render("studentLogin");
   } else {
-    const user = await studentsignin.findOne({ email }).select("+psw");
+    const user = await studentsignin.findOne({ email: eid }).select("+psw");
     if (user || correctPassword(req.body.psw, user.psw)) {
       const secret = "my-secret-string-used-in-formation-of-token";
       const expiresIn = 3 * 24 * 60 * 60;
+      // console.log(user._id);
       const token = jwt.sign({ id: user._id }, secret, {
         expiresIn,
       });
 
-      res.cookie("jwt", token, {
+      res.cookie("stu", token, {
         httpOnly: true,
         expiresIn: expiresIn * 1000,
       });
       console.log("done");
 
-      res
-      .status(201)
-      .render("Studentdashboard");
+      res.status(201).render("StudentUploadDocs");
     }
+  }
+};
+
+exports.protectStudent = async (req, res, next) => {
+  let token;
+
+  token = req.cookies.stu;
+
+  if (!token) {
+    res.redirect("/login/studentlogin");
+  } else {
+    const secret = "my-secret-string-used-in-formation-of-token";
+
+    jwt.verify(token, secret, (err, decoded) => {
+      if (err) {
+        res.redirect("/login/studentlogin");
+      } else {
+        next();
+      }
+    });
   }
 };
