@@ -1,4 +1,5 @@
 const StaffAdvDetails = require("./../Models/staffAdvisiorDetailsSchema");
+const studentsignin=require("./../Models/studentsignin");
 const nodemailer = require("nodemailer");
 const brcypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -145,5 +146,32 @@ exports.protectCoordinator = async (req, res, next) => {
         next();
       }
     });
+  }
+};
+
+
+exports.studentLoginAuth=async(req,res)=>{
+  const { email, psw } = req.body;
+  if (!email || !psw) {
+    res.render("StudentUploadDocs");
+  } else {
+    const user = await studentsignin.findOne({ email }).select("+psw");
+    if (user || correctPassword(req.body.psw, user.psw)) {
+      const secret = "my-secret-string-used-in-formation-of-token";
+      const expiresIn = 3 * 24 * 60 * 60;
+      const token = jwt.sign({ id: user._id }, secret, {
+        expiresIn,
+      });
+
+      res.cookie("jwt", token, {
+        httpOnly: true,
+        expiresIn: expiresIn * 1000,
+      });
+      console.log("done");
+
+      res
+      .status(201)
+      .render("Studentdashboard");
+    }
   }
 };

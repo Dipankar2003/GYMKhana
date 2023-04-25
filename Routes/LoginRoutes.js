@@ -6,8 +6,8 @@ const Router = express.Router();
 
 
 Router.route("/studentLogin")
-  .get(loginController.studentLogin);
-
+  .get(loginController.studentLogin)
+  .post(loginController.studentLoginAuth);
 Router.route("/coordinator")
   .get(loginController.coordinatorLogin)
   .post(loginController.coordinatorLoginAuth);
