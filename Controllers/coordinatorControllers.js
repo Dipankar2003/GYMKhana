@@ -1,7 +1,7 @@
 const StaffAdvDetails = require("./../Models/staffAdvisiorDetailsSchema");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
-
+const generateDocuments = require("./../Models/generateDoc");
 //change
 const jwt = require("jsonwebtoken");
 
@@ -77,4 +77,9 @@ exports.sendNotification = (req, res) => {
       }
     }
   );
+};
+
+exports.generateSportsReport = async (req, res) => {
+  const sportsdetail = await generateDocuments.find();
+  res.render("cordinatorSportsReport", { sportsdetail });
 };

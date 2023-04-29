@@ -2,8 +2,8 @@ const getTeamDetails = require("./../Models/getTeamDetailsmodels");
 const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
 const generateDoc = require("./../Models/generateDoc");
-const viewDoc=require("./../Models/viewDoc");
-
+const viewDoc = require("./../Models/viewDoc");
+const StudentDocModel = require("./../Models/studentDocModel");
 
 exports.satffAdvHomePage = (req, res) => {
   res.render("staffAdvHomePage");
@@ -13,8 +13,8 @@ exports.getDetails = (req, res) => {
   res.render("getTeamDetails");
 };
 
-exports.viewDoc=(req,res)=>{
-  res.render("view_docs");
+exports.viewDoc = (req, res) => {
+  res.render("sportsList");
 };
 
 exports.saveDetail = async (req, res) => {
@@ -66,4 +66,11 @@ exports.saveDocDetail = async (req, res) => {
     .then((result) => {
       console.log("data saved");
     });
+};
+
+exports.selectedSports = async (req, res) => {
+  let sports = req.params.name;
+  sports = sports.toLowerCase();
+  const results = await StudentDocModel.find({ sports });
+  res.render("sportsTeamCard", { results });
 };

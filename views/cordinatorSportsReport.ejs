@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Documents</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <div class="row">
+      <% sportsdetail.forEach((out)=>{ %>
+      <div class="column">
+        <div class="card1">
+          <div class="container">
+            <h2><b>Sport : <%=out.sports%></b></h2>
+            <h4>level : <%=out.level%></h4>
+            <h4>participant Count : <%=out.pcount%></h4>
+            <h4>Total Gold Winner : <%=out.goldcount%></h4>
+            <h4>Total Silver Winner : <%=out.silvercount%></h4>
+            <h4>Total Bronze Winner : <%=out.bronzecount%></h4>
+          </div>
+        </div>
+      </div>
+      <%});%>
+    </div>
+  </body>
+</html>

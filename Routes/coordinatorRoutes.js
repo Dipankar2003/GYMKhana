@@ -26,4 +26,9 @@ Router.route("/notifyAll")
   .get(loginController.protectCoordinator, coordinatorController.notifyAll)
   .post(coordinatorController.sendNotification);
 
+Router.route("/generateReport").get(
+  loginController.protectCoordinator,
+  coordinatorController.generateSportsReport
+);
+
 module.exports = Router;
