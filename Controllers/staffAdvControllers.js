@@ -65,7 +65,10 @@ exports.saveDocDetail = async (req, res) => {
     })
     .then((result) => {
       console.log("data saved");
+      res.redirect("/login/staffAdvLogin/generateDoc");
     });
+
+
 };
 
 exports.selectedSports = async (req, res) => {

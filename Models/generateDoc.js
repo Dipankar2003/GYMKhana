@@ -40,11 +40,11 @@ const generateDoc=new Schema({
         required: true
     },
     playername:{
-        type: String,
+        type: [String],
         required: true
     },
     classnm:{
-        type: String,
+        type: [String],
         required: true
     }
 

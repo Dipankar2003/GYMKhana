@@ -40,9 +40,9 @@ exports.storeStudentDetails= async (req,res)=>{
 
       res
       .status(201)
-      .render("studenDashboard");
+      .redirect("/login/studentlogin");
       });
-      console.log(studentDtails);
+    
     }
   } 
   else{

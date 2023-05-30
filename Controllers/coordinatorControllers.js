@@ -67,19 +67,22 @@ exports.sendNotification = (req, res) => {
   transporter.sendMail(
     {
       from: "shradhakore274@gmail.com",
-      to: "ddubey10032003@gmail.com",
-      subject: "Testing",
+      to: "shraddha.kore@walchandsangli.ac.in",
+      subject: "Important Notice",
       text: req.body.subject,
     },
     (err, info) => {
       if (err) {
         console.log(err);
       }
+
+      res.redirect("/login/coordinatorLogin/NotifyAll");
     }
+
   );
 };
 
 exports.generateSportsReport = async (req, res) => {
   const sportsdetail = await generateDocuments.find();
-  res.render("cordinatorSportsReport", { sportsdetail });
+  res.render("cordinatorSportsReport", { sportsdetail }); 
 };

@@ -1,10 +1,31 @@
 * {
   box-sizing: border-box;
+  
+ 
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+ 
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  
+  
 }
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('./img/BG1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  opacity: 0.3; /* Change the value to adjust the opacity */
+  z-index: -1;
+}
+
 
 /* Float four columns side by side */
 .column {
@@ -65,7 +86,7 @@ body {
 
 .table td,.table th{
   padding:15px 18px;
- border:1px inset rgb(187, 175, 175);
+ border:1px inset rgb(101, 52, 52);
   text-align: center;
   font-size:16px;
   border-spacing: 30px;
@@ -78,11 +99,11 @@ body {
  
 }
 
-.table tbody tr:nth-child(even){
-  background-color: #f5f5f5;
+.table tbody tr{
+  background-color: #cae9f4;
 
 }
-tr:hover {background-color: #D6EEEE;}
+
 
 .card1:hover{
   background-color: #48adcf;
@@ -200,3 +221,13 @@ background: rgba(63, 177, 223, 0.5);
 .child{
   display: inline-block;
 }
+
+
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  }
+

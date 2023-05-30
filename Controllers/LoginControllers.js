@@ -36,11 +36,11 @@ exports.coordinatorLoginAuth = async (req, res) => {
     },
   });
 
-  if (enterEmail == "ddubey10032002@gmail.com") {
+  if (enterEmail == "shradhakore274@gmail.com") {
     transporter.sendMail(
       {
         from: "ddubey10032003@gmail.com",
-        to: "ddubey10032002@gmail.com",
+        to: "shradhakore274@gmail.com",
         subject: "Your OTP",
         text: `${OTP}`,
       },
